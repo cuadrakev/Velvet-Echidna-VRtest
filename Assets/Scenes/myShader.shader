@@ -58,7 +58,7 @@ Shader "Unlit/myShader"
                 float3 pointLight = float3(unity_4LightPosX0.x, unity_4LightPosY0.x, unity_4LightPosZ0.x);
                 float3 L = normalize(pointLight - i.worldVertex.xyz);
                 float NdotL = max(0.0, dot(normalize(i.fragNormal), L));
-                NdotL = floor(NdotL / 0.3);
+                NdotL = floor(NdotL / 0.3) / 10.0;
                 float4 pointColor = float4(unity_LightColor[0].rgb * NdotL, 1.);
 
                 if (_WorldSpaceLightPos0.w == 0.0)
@@ -70,8 +70,8 @@ Shader "Unlit/myShader"
                     L = normalize(_WorldSpaceLightPos0.xyz - i.worldVertex.xyz);
                 }
                 NdotL = max(0.0, dot(normalize(i.fragNormal), L));
-                NdotL = floor(NdotL / 0.3);
-                float4 otherColor = _LightColor0 * NdotL + pointColor;
+                NdotL = floor(NdotL / 0.3) / 10.0;
+                float4 otherColor = _LightColor0 * NdotL + pointColor + unity_AmbientSky;
 
                 return col * otherColor;
             }
