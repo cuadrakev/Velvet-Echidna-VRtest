@@ -1,8 +1,4 @@
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-
-// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
-
-Shader "Unlit/myShader"
+Shader "MyShaders/ToonShader"
 {
     Properties
     {
@@ -51,7 +47,13 @@ Shader "Unlit/myShader"
                 return o;
             }
 
-            fixed4 frag (v2f i) : SV_Target
+            struct colorOut
+            {
+                fixed4 color : COLOR0;
+                fixed4 normal : COLOR1;
+            };
+
+            colorOut frag (v2f i)
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
 
@@ -73,7 +75,10 @@ Shader "Unlit/myShader"
                 NdotL = floor(NdotL / 0.3) / 10.0;
                 float4 otherColor = _LightColor0 * NdotL + pointColor + unity_AmbientSky;
 
-                return col * otherColor;
+                colorOut o;
+                o.color = col * otherColor;
+                o.normal = fixed4(i.fragNormal, 1.0);
+                return o;
             }
             ENDCG
         }
