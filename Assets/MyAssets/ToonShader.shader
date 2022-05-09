@@ -2,7 +2,9 @@ Shader "MyShaders/ToonShader"
 {
     Properties
     {
+        _Color ("Diffuse color", COLOR) = (1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
+        _ShadingRange ("Shading range", Range(0.0, 10.0)) = 3.0
     }
     SubShader
     {
@@ -18,6 +20,8 @@ Shader "MyShaders/ToonShader"
 
             #include "UnityCG.cginc"
             #include "UnityLightingCommon.cginc"
+            #include "Lighting.cginc"
+            #include "AutoLight.cginc"
 
             struct appdata
             {
@@ -32,10 +36,13 @@ Shader "MyShaders/ToonShader"
                 float2 uv : TEXCOORD0;
                 float4 worldVertex : TEXCOORD1;
                 float3 fragNormal : TEXCOORD2;
+                SHADOW_COORDS(3)
             };
 
             sampler2D _MainTex;
             float4 _MainTex_ST;
+            fixed4 _Color;
+            float _ShadingRange;
 
             v2f vert (appdata v)
             {
@@ -44,43 +51,69 @@ Shader "MyShaders/ToonShader"
                 o.worldVertex = mul(unity_ObjectToWorld, v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.fragNormal = UnityObjectToWorldNormal(v.normal);
+                TRANSFER_SHADOW(o);
                 return o;
             }
 
-            struct colorOut
+            fixed4 frag (v2f i): SV_Target
             {
-                fixed4 color : COLOR0;
-                fixed4 normal : COLOR1;
-            };
+                fixed4 col = _Color * tex2D(_MainTex, i.uv);
+                fixed4 light;
+                float specular;
+                fixed shadow = SHADOW_ATTENUATION(i);
+                float3 V = normalize(_WorldSpaceCameraPos - i.worldVertex.xyz);
 
-            colorOut frag (v2f i)
-            {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                float3 L = normalize(_WorldSpaceLightPos0.xyz);
+                float3 H = normalize(L + V);
+                float NdotL = max(0.0, dot(i.fragNormal, L));
+                NdotL = floor(NdotL * 10.0 / _ShadingRange) / 10.0;
+                light = _LightColor0 * NdotL;
+                specular = pow(max(0.0, dot(i.fragNormal, H)), 10);
 
-                float3 pointLight = float3(unity_4LightPosX0.x, unity_4LightPosY0.x, unity_4LightPosZ0.x);
-                float3 L = normalize(pointLight - i.worldVertex.xyz);
-                float NdotL = max(0.0, dot(normalize(i.fragNormal), L));
-                NdotL = floor(NdotL / 0.3) / 10.0;
-                float4 pointColor = float4(unity_LightColor[0].rgb * NdotL, 1.);
-
-                if (_WorldSpaceLightPos0.w == 0.0)
+                for(int l = 0; l < 4; l++)
                 {
-                    L = normalize(_WorldSpaceLightPos0.xyz);
+                    float3 lightPosition = float3(unity_4LightPosX0[l], unity_4LightPosY0[l], unity_4LightPosZ0[l]);
+                    L = normalize(lightPosition.xyz - i.worldVertex.xyz);
+                    H = normalize(L + V);
+                    NdotL = max(0.0, dot(i.fragNormal, L));
+                    NdotL = floor(NdotL * 10.0 / _ShadingRange) / 10.0;
+                    light += float4(unity_LightColor[l].xyz * NdotL, 1.);
+                    specular += floor(pow(max(0.0, dot(i.fragNormal, H)), 200) * 10.0 / 5) / 10.0;
                 }
-                else
-                {
-                    L = normalize(_WorldSpaceLightPos0.xyz - i.worldVertex.xyz);
-                }
-                NdotL = max(0.0, dot(normalize(i.fragNormal), L));
-                NdotL = floor(NdotL / 0.3) / 10.0;
-                float4 otherColor = _LightColor0 * NdotL + pointColor + unity_AmbientSky;
 
-                colorOut o;
-                o.color = col * otherColor;
-                o.normal = fixed4(i.fragNormal, 1.0);
-                return o;
+                return col * light * shadow + fixed4(1, 1, 1, 1) * specular + col * fixed4(ShadeSH9(half4(i.fragNormal, 1)), 1);
             }
             ENDCG
         }
+
+        Pass
+        {
+          Tags {"LightMode"="ShadowCaster"}
+          CGPROGRAM
+          #pragma vertex vert
+          #pragma fragment frag
+          #pragma multi_compile_shadowcaster
+          #include "UnityCG.cginc"
+
+          struct v2f
+          {
+                V2F_SHADOW_CASTER;
+          };
+
+          v2f vert(appdata_base v)
+          {
+            v2f o;
+            TRANSFER_SHADOW_CASTER_NORMALOFFSET(o);
+            return o;
+          }
+
+          float4 frag(v2f i): SV_TARGET
+          {
+            SHADOW_CASTER_FRAGMENT(i);
+          }
+          ENDCG
+        }
+
+        UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
     }
 }
