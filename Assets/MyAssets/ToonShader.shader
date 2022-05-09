@@ -4,7 +4,9 @@ Shader "MyShaders/ToonShader"
     {
         _Color ("Diffuse color", COLOR) = (1,1,1)
         _MainTex ("Texture", 2D) = "white" {}
+        _Glossiness ("Glossiness", Range(0.0, 50.0)) = 30.0
         _ShadingRange ("Shading range", Range(0.0, 10.0)) = 3.0
+        _SpecularRange ("Specular range", Range(0.0, 10.0)) = 5.0
     }
     SubShader
     {
@@ -43,6 +45,8 @@ Shader "MyShaders/ToonShader"
             float4 _MainTex_ST;
             fixed4 _Color;
             float _ShadingRange;
+            float _SpecularRange;
+            float _Glossiness;
 
             v2f vert (appdata v)
             {
@@ -68,8 +72,11 @@ Shader "MyShaders/ToonShader"
                 float NdotL = max(0.0, dot(i.fragNormal, L));
                 NdotL = floor(NdotL * 10.0 / _ShadingRange) / 10.0;
                 light = _LightColor0 * NdotL;
-                specular = pow(max(0.0, dot(i.fragNormal, H)), 10);
+                specular = pow(max(0.0, dot(i.fragNormal, H)), _Glossiness * _Glossiness);
+                specular = smoothstep(0.05, 0.1, specular);//floor(specular * 10.0 / _SpecularRange) / 10.0;
 
+
+                /*
                 for(int l = 0; l < 4; l++)
                 {
                     float3 lightPosition = float3(unity_4LightPosX0[l], unity_4LightPosY0[l], unity_4LightPosZ0[l]);
@@ -80,8 +87,9 @@ Shader "MyShaders/ToonShader"
                     light += float4(unity_LightColor[l].xyz * NdotL, 1.);
                     specular += floor(pow(max(0.0, dot(i.fragNormal, H)), 200) * 10.0 / 5) / 10.0;
                 }
+                */
 
-                return col * light * shadow + fixed4(1, 1, 1, 1) * specular + col * fixed4(ShadeSH9(half4(i.fragNormal, 1)), 1);
+                return col * shadow * (light + fixed4(1, 1, 1, 1) * specular) + col * fixed4(ShadeSH9(half4(i.fragNormal, 1)), 1);
             }
             ENDCG
         }
