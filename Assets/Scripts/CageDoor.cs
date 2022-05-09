@@ -9,7 +9,7 @@ public class CageDoor : MonoBehaviour
     {
         if (other.CompareTag("KeyRusty"))
         {
-            transform.Rotate(0, 0, -90);
+            transform.Rotate(0, 0, -75);
             floor.SetActive(true);
         }
     }
