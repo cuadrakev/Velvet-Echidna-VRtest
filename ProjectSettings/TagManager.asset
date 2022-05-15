@@ -6,6 +6,9 @@ TagManager:
   tags:
   - KeyRusty
   - Ingredient
+  - CandyCane
+  - Candy
+  - Floor
   layers:
   - Default
   - TransparentFX

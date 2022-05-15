@@ -6,16 +6,17 @@ public class CouldronScript : MonoBehaviour
 {
     private List<string> insertedIngredients = new List<string>();
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
-
+        if(insertedIngredients.Count == 2)
+        {
+            //if(insertedIngredients[0] == "Ingredient1" && insertedIngredients[0] == "Ingredient2")
+            {
+                GetComponent<Renderer>().material.SetColor("_Color", Color.white);
+                transform.parent.Find("Bubbles").gameObject.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.white);
+                insertedIngredients.Clear();
+            }
+        }
     }
 
     private void OnTriggerEnter(Collider collider)

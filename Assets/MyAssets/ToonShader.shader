@@ -135,7 +135,13 @@ Shader "MyShaders/ToonShader"
                 return o;
             }
 
-            fixed4 getLight(fixed4 albedo, float3 fragPos, float3 normal, float2 uv, fixed shadowValue, float3 toLight, fixed3 lightColor)
+            struct LightProperties
+            {
+                fixed4 color;
+                float lightValue;
+            };
+
+            LightProperties getLight(fixed4 albedo, float3 fragPos, float3 normal, fixed shadowValue, float3 toLight, fixed3 lightColor)
             {
                 float3 V = normalize(_WorldSpaceCameraPos - fragPos);
                 float3 L = toLight;
@@ -144,40 +150,49 @@ Shader "MyShaders/ToonShader"
                 float lightIntensity = max(0.0, dot(normal, L));
                 lightIntensity = smoothstep(_DiffuseCutoff, _DiffuseCutoff + _DiffuseSmooth, lightIntensity) * shadowValue;
 
-                float halftone = tex2D(_Halftone, uv).a;
-                halftone = (halftone - _HalftoneInputMin) / (_HalftoneInputMax - _HalftoneInputMin);
-                halftone = lerp(_HalftoneOutputMin, _HalftoneOutputMax, halftone);
-                lightIntensity = step(halftone, lightIntensity);
-                float halftoneChange = fwidth(halftone) * 0.5;
-                lightIntensity = smoothstep(halftone - halftoneChange, halftone + halftoneChange, lightIntensity);
-
-
                 float specularFalloff = pow(dot(V, normal), _SpecularFalloff);
                 float specular = dot(H, normal) * specularFalloff;
                 float specularChange = fwidth(specular);
                 specular = smoothstep(1. - _SpecularSize, 1. - _SpecularSize + specularChange, specular);
 
-                return lerp(albedo * fixed4(lightColor, 1.) * lightIntensity, _Specular * fixed4(lightColor, 1.), saturate(specular));
+                LightProperties o;
+                o.color = lerp(albedo * fixed4(lightColor, 1.) * lightIntensity, _Specular * fixed4(lightColor, 1.), saturate(specular));
+                o.lightValue = lightIntensity;
+                return o;
+            }
+
+            fixed4 applyHalftone(LightProperties light, float2 uv)
+            {
+                float halftone = tex2D(_Halftone, uv).a;
+                halftone = (halftone - _HalftoneInputMin) / (_HalftoneInputMax - _HalftoneInputMin);
+                halftone = lerp(_HalftoneOutputMin, _HalftoneOutputMax, halftone);
+                float lightIntensity = step(halftone, saturate(light.lightValue));
+                float halftoneChange = fwidth(halftone) * 0.5;
+                lightIntensity = smoothstep(halftone - halftoneChange, halftone + halftoneChange, lightIntensity);
+
+                return light.color * lightIntensity;
             }
 
             fixed4 frag (v2f i): SV_Target
             {
                 fixed4 col = _Color * tex2D(_MainTex, i.uv);
-                fixed4 light;
                 fixed shadow = SHADOW_ATTENUATION(i);
+                fixed4 outColor;
 
                 float3 L = normalize(_WorldSpaceLightPos0.xyz);
-                light = getLight(col, i.worldVertex.xyz, i.fragNormal, i.halftoneUv, shadow, L, _LightColor0);
+                outColor = applyHalftone(getLight(col, i.worldVertex.xyz, i.fragNormal, shadow, L, _LightColor0), i.halftoneUv);
 
                 for(int l = 0; l < 4; l++)
                 {
                     float3 lightPosition = float3(unity_4LightPosX0[l], unity_4LightPosY0[l], unity_4LightPosZ0[l]);
                     L = normalize(lightPosition.xyz - i.worldVertex.xyz);
-                    if(length(unity_LightColor[l].xyz) > 0.)
-                        light += getLight(col, i.worldVertex.xyz, i.fragNormal, i.halftoneUv, shadow, L, unity_LightColor[l].xyz);
+                    if (length(unity_LightColor[l].xyz) > 0.)
+                    {
+                        outColor += applyHalftone(getLight(col, i.worldVertex.xyz, i.fragNormal, shadow, L, unity_LightColor[l].xyz), i.halftoneUv);
+                    }
                 }
 
-                return light;
+                return col * outColor;
             }
             ENDCG
         }
