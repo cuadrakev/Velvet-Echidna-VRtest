@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Halftone:
-        m_Texture: {fileID: 2800000, guid: 546807acb9fdf9e4c85e1035290edef0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8c12caaf8113ab14bab95acac2e690a3, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -28,17 +28,17 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DiffuseCutoff: 0.042
+    - _DiffuseCutoff: 0
     - _DiffuseSmooth: 0.5
-    - _HalftoneInputMax: 0.94
-    - _HalftoneInputMin: 0
+    - _HalftoneInputMax: 1
+    - _HalftoneInputMin: 0.219
     - _HalftoneOutputMax: 1
     - _HalftoneOutputMin: 0
-    - _OutlineThickness: 0
+    - _OutlineThickness: 0.034
     - _SpecularFalloff: 3.1
     - _SpecularSize: 0.286
     m_Colors:
     - _Color: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0.3773585, g: 0.3773585, b: 0.3773585, a: 1}
     - _Specular: {r: 1, g: 0.4292453, b: 0.4292453, a: 1}
   m_BuildTextureStacks: []

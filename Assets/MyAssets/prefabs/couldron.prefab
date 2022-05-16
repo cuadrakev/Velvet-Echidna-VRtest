@@ -9792,7 +9792,7 @@ GameObject:
   - component: {fileID: 4905073981023154341}
   - component: {fileID: 4876521317830054221}
   - component: {fileID: 7940937612059202964}
-  - component: {fileID: 5389098573022410676}
+  - component: {fileID: 2839726564771908149}
   m_Layer: 0
   m_Name: mixture
   m_TagString: Untagged
@@ -9863,17 +9863,16 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5389098573022410676
-CapsuleCollider:
+--- !u!135 &2839726564771908149
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7858964017696034296}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Radius: 0.37523308
+  m_Center: {x: 0, y: 2123.945, z: 0}

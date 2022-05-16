@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Halftone:
-        m_Texture: {fileID: 2800000, guid: 546807acb9fdf9e4c85e1035290edef0, type: 3}
+        m_Texture: {fileID: 2800000, guid: 8c12caaf8113ab14bab95acac2e690a3, type: 3}
         m_Scale: {x: 6, y: 6}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -69,14 +69,14 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HalftoneInputMax: 0.306
-    - _HalftoneInputMin: 0
+    - _HalftoneInputMax: 0.386
+    - _HalftoneInputMin: 0.153
     - _HalftoneOutputMax: 1
-    - _HalftoneOutputMin: 0.04
+    - _HalftoneOutputMin: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0.007
+    - _OutlineThickness: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularFalloff: 1.83
