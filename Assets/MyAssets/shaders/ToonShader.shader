@@ -192,7 +192,7 @@ Shader "MyShaders/ToonShader"
                     }
                 }
 
-                return col * outColor;
+                return col * outColor + 0.01 * fixed4(ShadeSH9(float4(i.fragNormal, 1.0)), 1.0);
             }
             ENDCG
         }

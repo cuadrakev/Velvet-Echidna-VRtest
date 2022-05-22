@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefaultMaterial_Base_color_1001
+  m_Name: chocolate
   m_Shader: {fileID: 4800000, guid: 53fb06cb6eba8104793e29562b2dd3ab, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -44,7 +44,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 658a79b68293e5f49a7d2322c8664a1d, type: 3}
+        m_Texture: {fileID: 2800000, guid: ece6a295550be134e96453e1ae5ecf31, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -64,7 +64,7 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DiffuseCutoff: 0.2
-    - _DiffuseSmooth: 0.1
+    - _DiffuseSmooth: 0.5
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
