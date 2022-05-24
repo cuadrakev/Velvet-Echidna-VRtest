@@ -7,7 +7,11 @@ public class RayObjectCaller : MonoBehaviour
 {
     public void OnPressUp(ViveInputVirtualButton.OutputEventArgs args)
     {
-        Transform hand = args.senderObj.gameObject.transform.Find("Right"); 
+        Transform hand;
+        if (args.senderObj.inputs[0].viveRole.roleValue == (int)HandRole.RightHand)
+         hand = args.senderObj.gameObject.transform.Find("Right");
+       else
+          hand = args.senderObj.gameObject.transform.Find("Left");
         ReticlePoser reticle = hand.Find("Reticle").gameObject.GetComponent<ReticlePoser>();
         GameObject hitObject = reticle.hitTarget;
         BasicGrabbable grabbableComponent = hitObject.GetComponent<BasicGrabbable>();
