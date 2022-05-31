@@ -40,8 +40,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Halftone:
-        m_Texture: {fileID: 2800000, guid: 546807acb9fdf9e4c85e1035290edef0, type: 3}
-        m_Scale: {x: 0.1, y: 0.1}
+        m_Texture: {fileID: 2800000, guid: 00943238ca7706442b4dfde0889e7c2e, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fbdc28b4a3304bb4185e640c32ffc5c5, type: 3}
@@ -63,15 +63,15 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DiffuseCutoff: 0.088
-    - _DiffuseSmooth: 0.213
+    - _DiffuseCutoff: 0.238
+    - _DiffuseSmooth: 0.04
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.209
     - _GlossyReflections: 1
-    - _HalftoneInputMax: 1
+    - _HalftoneInputMax: 0.847
     - _HalftoneInputMin: 0
-    - _HalftoneOutputMax: 1
+    - _HalftoneOutputMax: 0.693
     - _HalftoneOutputMin: 0
     - _Metallic: 0
     - _Mode: 0
@@ -79,9 +79,9 @@ Material:
     - _OutlineThickness: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
-    - _SpecularFalloff: 1
+    - _SpecularFalloff: 2.47
     - _SpecularHighlights: 1
-    - _SpecularSize: 0.02
+    - _SpecularSize: 0.109
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
