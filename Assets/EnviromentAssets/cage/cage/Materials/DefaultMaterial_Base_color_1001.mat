@@ -41,7 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Halftone:
         m_Texture: {fileID: 2800000, guid: 8c12caaf8113ab14bab95acac2e690a3, type: 3}
-        m_Scale: {x: 6, y: 6}
+        m_Scale: {x: 5.79, y: 6}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 537e4ce2861de3c4fa42d85afac755d2, type: 3}
@@ -63,14 +63,14 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
-    - _DiffuseCutoff: 0
-    - _DiffuseSmooth: 0.207
+    - _DiffuseCutoff: 0.137
+    - _DiffuseSmooth: 0.5
     - _DstBlend: 0
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HalftoneInputMax: 1
-    - _HalftoneInputMin: 0
+    - _HalftoneInputMax: 0.811
+    - _HalftoneInputMin: 0.255
     - _HalftoneOutputMax: 1
     - _HalftoneOutputMin: 0
     - _Metallic: 0
@@ -79,14 +79,14 @@ Material:
     - _OutlineThickness: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
-    - _SpecularFalloff: 1.83
+    - _SpecularFalloff: 0.89
     - _SpecularHighlights: 1
-    - _SpecularSize: 0.147
+    - _SpecularSize: 0.113
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.9339623, g: 0.8229441, b: 0.8229441, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0.6981132, g: 0.22019248, b: 0, a: 1}
     - _Specular: {r: 1, g: 1, b: 1, a: 1}

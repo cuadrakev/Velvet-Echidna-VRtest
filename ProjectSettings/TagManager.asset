@@ -9,6 +9,11 @@ TagManager:
   - CandyCane
   - Candy
   - Floor
+  - JellyBean
+  - SpiderCandy
+  - Spider2
+  - SpiderCandyYellow
+  - SpiderCandyRed
   layers:
   - Default
   - TransparentFX
