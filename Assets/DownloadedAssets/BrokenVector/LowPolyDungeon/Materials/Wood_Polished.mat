@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Wood_Polished
-  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_Shader: {fileID: 4800000, guid: 53fb06cb6eba8104793e29562b2dd3ab, type: 3}
   m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF _SMOOTHNESS_TEXTURE_ALBEDO_CHANNEL_A
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,6 +39,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Halftone:
+        m_Texture: {fileID: 2800000, guid: 00943238ca7706442b4dfde0889e7c2e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: fbdc28b4a3304bb4185e640c32ffc5c5, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -59,19 +63,31 @@ Material:
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
+    - _DiffuseCutoff: 0
+    - _DiffuseSmooth: 0.1
     - _DstBlend: 0
     - _GlossMapScale: 0.244
     - _Glossiness: 0.772
     - _GlossyReflections: 0
+    - _HalftoneInputMax: 1
+    - _HalftoneInputMin: 0
+    - _HalftoneOutputMax: 1
+    - _HalftoneOutputMin: 0
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
+    - _OutlineThickness: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 1
+    - _SpecularFalloff: 1
     - _SpecularHighlights: 1
+    - _SpecularSize: 0.1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Specular: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

@@ -4,27 +4,35 @@ using UnityEngine;
 
 public class CouldronScript : MonoBehaviour
 {
+    public Color startingColor;
+    public Color endColor;
     private List<string> insertedIngredients = new List<string>();
+    int maxIngredients = 2;
+    private Material mixtureMaterial;
+    private Material bubblesMaterial;
 
-    void Update()
+    void Start()
     {
-        if(insertedIngredients.Count == 2)
-        {
-            //if(insertedIngredients[0] == "Ingredient1" && insertedIngredients[0] == "Ingredient2")
-            {
-                GetComponent<Renderer>().material.SetColor("_Color", Color.white);
-                transform.parent.Find("Bubbles").gameObject.GetComponent<ParticleSystemRenderer>().material.SetColor("_Color", Color.white);
-                insertedIngredients.Clear();
-            }
-        }
+        mixtureMaterial = GetComponent<Renderer>().material;
+        bubblesMaterial = transform.parent.Find("Bubbles").gameObject.GetComponent<ParticleSystemRenderer>().material;
+        UpdateMixture();
+    }
+
+    void UpdateMixture()
+    {
+        int ingredientCount = insertedIngredients.Count;
+        Color currentColor = Color.Lerp(startingColor, endColor, ((float)ingredientCount / (float)maxIngredients));
+        mixtureMaterial.SetColor("_Color", currentColor);
+        bubblesMaterial.SetColor("_Color", currentColor);
     }
 
     private void OnTriggerEnter(Collider collider)
     {
-      if(collider.gameObject.CompareTag("Ingredient"))
-      {
-          insertedIngredients.Add(collider.gameObject.name);
-          Destroy(collider.gameObject);
-      }
+        if (collider.gameObject.CompareTag("Ingredient"))
+        {
+            insertedIngredients.Add(collider.gameObject.name);
+            Destroy(collider.gameObject);
+            UpdateMixture();
+        }
     }
 }

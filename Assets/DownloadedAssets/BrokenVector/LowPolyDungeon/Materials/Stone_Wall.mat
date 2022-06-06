@@ -79,9 +79,9 @@ Material:
     - _OutlineThickness: 0
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
-    - _SpecularFalloff: 2.47
+    - _SpecularFalloff: 0
     - _SpecularHighlights: 1
-    - _SpecularSize: 0.109
+    - _SpecularSize: 0.007
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
