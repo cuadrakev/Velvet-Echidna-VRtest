@@ -6,6 +6,9 @@ Shader "Custom/PlantShader"
         _MainTex ("Texture", 2D) = "white" {}
         _Smoothness ("Smoothness", Range(0, 1)) = 0
         _Metallic ("Metalness", Range(0, 1)) = 0
+		_Grow ("Grow", Range(0, 1)) = 0
+        _Scale("Scale", Float) = 0
+        _Clip("Clip", Range(0, 1)) = 0
         [HDR] _Emission ("Emission", color) = (0,0,0)
 
         _Amplitude ("Wave Size", Range(0,1)) = 0.4
@@ -26,6 +29,7 @@ Shader "Custom/PlantShader"
         //addshadows tells the surface shader to generate a new shadow pass based on out vertex shader
         #pragma surface surf Standard fullforwardshadows vertex:vert addshadow
         #pragma target 3.0
+		#include "UnityCG.cginc"
 
         sampler2D _MainTex;
         fixed4 _Color;
@@ -34,6 +38,10 @@ Shader "Custom/PlantShader"
         half _Metallic;
         half3 _Emission;
 
+		float _Grow;
+		float _Scale;
+		float _Clip;
+		
         float _Amplitude;
         float _Frequency;
         float _AnimationSpeed;
@@ -44,22 +52,35 @@ Shader "Custom/PlantShader"
         };
 
         void vert(inout appdata_full data){
+
             float4 modifiedPos = data.vertex;
-            modifiedPos.x += sin(data.vertex.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
+            //modifiedPos.x += sin(data.vertex.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
             
-            float3 posPlusTangent = data.vertex + data.tangent * 0.01;
-            posPlusTangent.x += sin(posPlusTangent.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
+            //float3 posPlusTangent = data.vertex + data.tangent * 0.01;
+            //posPlusTangent.x += sin(posPlusTangent.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
 
-            float3 bitangent = cross(data.normal, data.tangent);
-            float3 posPlusBitangent = data.vertex + bitangent * 0.01;
-            posPlusBitangent.x += sin(posPlusBitangent.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
+            //float3 bitangent = cross(data.normal, data.tangent);
+            //float3 posPlusBitangent = data.vertex + bitangent * 0.01;
+            //posPlusBitangent.x += sin(posPlusBitangent.y * _Frequency - _Time.x * _AnimationSpeed) * _Amplitude;
 
-            float3 modifiedTangent = posPlusTangent - modifiedPos;
-            float3 modifiedBitangent = posPlusBitangent - modifiedPos;
+            //float3 modifiedTangent = posPlusTangent - modifiedPos;
+            //float3 modifiedBitangent = posPlusBitangent - modifiedPos;
 
-            float3 modifiedNormal = cross(modifiedTangent, modifiedBitangent);
-            data.normal = normalize(modifiedNormal);
-            data.vertex = modifiedPos;
+            //float3 modifiedNormal = cross(modifiedTangent, modifiedBitangent);
+            //data.normal = normalize(modifiedNormal);
+            //data.vertex = modifiedPos;
+			
+			float substract1 = data.texcoord1 - _Grow;
+			float saturate1 = saturate(substract1); 
+			float multiply1 = _Scale * saturate1;
+			
+			modifiedPos.x += (data.vertex.x + data.normal.x * multiply1) - _Time.x * _AnimationSpeed * 0.001;
+			modifiedPos.y = data.vertex.y + data.normal.y * multiply1;
+			modifiedPos.z = data.vertex.z + data.normal.z * multiply1;
+			
+			data.vertex = modifiedPos;
+            data.normal = data.normal;
+            data.tangent = data.tangent;
         }
 
         //the surface shader function which sets parameters the lighting function then uses
@@ -72,6 +93,7 @@ Shader "Custom/PlantShader"
             o.Metallic = _Metallic;
             o.Smoothness = _Smoothness;
             o.Emission = _Emission;
+			//o.Alpha = 
         }
         ENDCG
     }
