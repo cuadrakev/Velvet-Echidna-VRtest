@@ -74,7 +74,7 @@ Shader "Custom/PlantShader"
 			float saturate1 = saturate(substract1); 
 			float multiply1 = _Scale * saturate1;
 			
-			modifiedPos.x += (data.vertex.x + data.normal.x * multiply1) - _Time.x * _AnimationSpeed * 0.001;
+			modifiedPos.x += (data.vertex.x + data.normal.x * multiply1) - _Time.x * _AnimationSpeed * 0.004;
 			modifiedPos.y = data.vertex.y + data.normal.y * multiply1;
 			modifiedPos.z = data.vertex.z + data.normal.z * multiply1;
 			

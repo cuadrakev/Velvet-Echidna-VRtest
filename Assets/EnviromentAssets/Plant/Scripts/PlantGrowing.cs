@@ -10,8 +10,8 @@ public class PlantGrowing : MonoBehaviour
     [Range(0, 5)]
     public float minGrow = 0.0f;
     [Range(0, 5)]
-    public float maxGrow = 2.0f;
-    private List<string> insertedCone = new List<string>();
+    public float maxGrow = 5.0f;
+    private string insertedCone;
 
     private List<Material> plantMaterials = new List<Material>();
     private bool fullyGrown;
@@ -34,7 +34,7 @@ public class PlantGrowing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (insertedCone.Count == 1)
+        if (insertedCone.Equals("Spoon"))
         //if (Input.GetKeyDown(KeyCode.Space))
         {
             for (int i = 0; i < plantMaterials.Count; i++)
@@ -84,8 +84,8 @@ public class PlantGrowing : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Spoon"))
         {
-            insertedCone.Add(collider.gameObject.name);
-            Destroy(collider.gameObject);
+            insertedCone = collider.gameObject.name;
+            //Destroy(collider.gameObject);
         }
     }
 }
