@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: DefaultMaterial_Base_color_1001 1
+  m_Name: Material _20_Base_color_1002
   m_Shader: {fileID: 4800000, guid: 53fb06cb6eba8104793e29562b2dd3ab, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -24,19 +24,19 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: b9f5bcd9226ec5347bba89b80dd525c9, type: 3}
+        m_Texture: {fileID: 2800000, guid: cb9f45dbc884cd24a86fd1aa19cbef53, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DiffuseCutoff: 0.146
-    - _DiffuseSmooth: 0.399
-    - _HalftoneInputMax: 0.617
-    - _HalftoneInputMin: 0.11
-    - _HalftoneOutputMax: 0.97
-    - _HalftoneOutputMin: 0.121
-    - _OutlineThickness: 0.007
-    - _SpecularFalloff: 0.54
-    - _SpecularSize: 0.066
+    - _DiffuseCutoff: 0.087
+    - _DiffuseSmooth: 0.279
+    - _HalftoneInputMax: 0.892
+    - _HalftoneInputMin: 0.151
+    - _HalftoneOutputMax: 1
+    - _HalftoneOutputMin: 0.389
+    - _OutlineThickness: 0.005
+    - _SpecularFalloff: 1
+    - _SpecularSize: 0
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
