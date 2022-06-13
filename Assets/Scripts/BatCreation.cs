@@ -12,7 +12,7 @@ public class BatCreation : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(bat);
-            bat.transform.position = transform.position;
+            bat.transform.position = transform.position + new Vector3(0, 1, 0);
             Destroy(this.gameObject);
         }
 

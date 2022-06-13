@@ -12,7 +12,7 @@ public class ConeCaneSpoon : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(coneCaneSpoon);
-            coneCaneSpoon.transform.position = transform.position;
+            coneCaneSpoon.transform.position = transform.position + new Vector3(0,1,0);
             Destroy(this.gameObject);
         }
 
@@ -20,7 +20,7 @@ public class ConeCaneSpoon : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(fullSpoon);
-            fullSpoon.transform.position = transform.position;
+            fullSpoon.transform.position = transform.position + new Vector3(0, 1, 0); ;
             Destroy(this.gameObject);
         }
     }

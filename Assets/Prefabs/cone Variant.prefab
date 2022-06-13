@@ -141,7 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db8e5188dde6549b946c88b3467bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coneCaneSpoon: {fileID: 0}
+  coneCaneSpoon: {fileID: 561656779766468611, guid: ae12de27ea35b4548950f51182990f55,
+    type: 3}
+  fullSpoon: {fileID: 7437518830162795083, guid: f0f8a61c99a3f2e4cba8859cca14d71f,
+    type: 3}
 --- !u!114 &7376398074130334452
 MonoBehaviour:
   m_ObjectHideFlags: 0
