@@ -17,6 +17,7 @@ TagManager:
   - IceCone
   - Spoon
   - Mixture
+  - Plant
   layers:
   - Default
   - TransparentFX

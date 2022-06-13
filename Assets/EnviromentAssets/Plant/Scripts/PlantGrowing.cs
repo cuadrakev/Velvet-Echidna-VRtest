@@ -5,13 +5,12 @@ using UnityEngine;
 public class PlantGrowing : MonoBehaviour
 {
     public List<MeshRenderer> plantMeshes;
-    public float timeToGrow = 5;
-    public float refreshRate = 0.05f;
+    public float timeToGrow;
+    public float refreshRate;
     [Range(0, 5)]
-    public float minGrow = 0.0f;
+    public float minGrow;
     [Range(0, 5)]
-    public float maxGrow = 5.0f;
-    private string insertedCone;
+    public float maxGrow;
 
     private List<Material> plantMaterials = new List<Material>();
     private bool fullyGrown;
@@ -34,14 +33,7 @@ public class PlantGrowing : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (insertedCone.Equals("Spoon"))
-        //if (Input.GetKeyDown(KeyCode.Space))
-        {
-            for (int i = 0; i < plantMaterials.Count; i++)
-            {
-                StartCoroutine(GrowPlant(plantMaterials[i]));
-            }
-        }
+
     }
 
     IEnumerator GrowPlant(Material mat)
@@ -60,13 +52,9 @@ public class PlantGrowing : MonoBehaviour
         }
         else
         {
-            while (growValue > minGrow)
-            {
-                growValue -= 1 / (timeToGrow / refreshRate);
-                mat.SetFloat("_AnimationSpeed", growValue);
+            growValue = maxGrow;
+            //mat.SetFloat("_AnimationSpeed", growValue);
 
-                yield return new WaitForSeconds(refreshRate);
-            }
         }
 
         if (growValue >= maxGrow)
@@ -84,8 +72,11 @@ public class PlantGrowing : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Spoon"))
         {
-            insertedCone = collider.gameObject.name;
-            //Destroy(collider.gameObject);
+            for (int i = 0; i < plantMaterials.Count; i++)
+            {
+                StartCoroutine(GrowPlant(plantMaterials[i]));
+            }
+            
         }
     }
 }
