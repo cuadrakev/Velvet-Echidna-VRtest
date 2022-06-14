@@ -12,6 +12,9 @@ public class PlantGrowing : MonoBehaviour
     [Range(0, 5)]
     public float maxGrow;
 
+    [SerializeField]
+    public AudioSource audioSource;
+
     private List<Material> plantMaterials = new List<Material>();
     private bool fullyGrown;
     // Start is called before the first frame update
@@ -77,6 +80,10 @@ public class PlantGrowing : MonoBehaviour
                 StartCoroutine(GrowPlant(plantMaterials[i]));
             }
             
+            if(audioSource)
+            {
+                audioSource.Play();
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ public class SpiderCreation : MonoBehaviour
             Destroy(other.gameObject);
             Instantiate(spider2);
             spider2.transform.position = transform.position;
+            spider2.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
 
@@ -20,7 +21,8 @@ public class SpiderCreation : MonoBehaviour
         {
             Destroy(other.gameObject);
             Instantiate(spiderFull);
-            spiderFull.transform.position = transform.position;
+            spiderFull.transform.position = transform.position; 
+            spiderFull.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
     }
