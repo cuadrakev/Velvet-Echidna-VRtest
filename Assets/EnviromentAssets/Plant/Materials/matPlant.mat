@@ -61,7 +61,7 @@ Material:
     - _AnimSpeedX: 0.09
     - _AnimSpeedY: 0.1
     - _AnimTiling: 5.1
-    - _AnimationSpeed: 0.2
+    - _AnimationSpeed: 0
     - _BumpScale: 1
     - _Clip: 0
     - _Cutoff: 0.5
