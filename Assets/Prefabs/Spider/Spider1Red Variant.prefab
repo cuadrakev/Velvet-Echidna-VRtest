@@ -22,7 +22,7 @@ PrefabInstance:
     - target: {fileID: 7397740963392714175, guid: 81d19e388a3d0bb43b1904387b5937f1,
         type: 3}
       propertyPath: m_Name
-      value: Spider1Red
+      value: Spider1Red Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7397740963392714175, guid: 81d19e388a3d0bb43b1904387b5937f1,
         type: 3}
@@ -89,5 +89,6 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: dc314add687ec0e499eaea3ffe612dfb, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1937602339563615637, guid: 81d19e388a3d0bb43b1904387b5937f1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 81d19e388a3d0bb43b1904387b5937f1, type: 3}

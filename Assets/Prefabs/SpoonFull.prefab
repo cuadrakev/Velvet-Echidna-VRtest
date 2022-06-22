@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 432773276519806614}
   - component: {fileID: 9046094182348283130}
   - component: {fileID: 8343160661825709513}
-  - component: {fileID: 6988522455960164262}
-  - component: {fileID: 6988522455960164263}
   - component: {fileID: 8429384512571708012}
+  - component: {fileID: 7364051651535876282}
+  - component: {fileID: 2790245824194440626}
   m_Layer: 0
   m_Name: SpoonFull
   m_TagString: Spoon
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7437518830162795083}
   m_LocalRotation: {x: 0.7079437, y: -0, z: -0, w: 0.7062689}
-  m_LocalPosition: {x: -4.857365, y: 1.8939258, z: -3.26559}
+  m_LocalPosition: {x: -4.534965, y: 1.356862, z: -3.8964362}
   m_LocalScale: {x: 0.49251425, y: 0.49251425, z: 0.49251425}
   m_Children:
   - {fileID: 537940515612211475}
@@ -87,34 +87,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!64 &6988522455960164262
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7437518830162795083}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -951608786083511892, guid: 37187bac2c2157a448958f6af27d68c5, type: 3}
---- !u!64 &6988522455960164263
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7437518830162795083}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -5491780849873737984, guid: e7d766eae2ba5c8409438fd3a7f35c0c, type: 3}
 --- !u!82 &8429384512571708012
 AudioSource:
   m_ObjectHideFlags: 0
@@ -126,7 +98,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 9e29ec569087501419da38d5c9c7c9f9, type: 3}
-  m_PlayOnAwake: 0
+  m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -211,6 +183,33 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &7364051651535876282
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437518830162795083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5958757, y: 0.24721767, z: 0.11773996}
+  m_Center: {x: -0.29999995, y: -0.2100002, z: 0.36590558}
+--- !u!136 &2790245824194440626
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7437518830162795083}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 0.72694314
+  m_Direction: 2
+  m_Center: {x: 0, y: 6.4086875e-11, z: 0.5061664}
 --- !u!1001 &768029917070833377
 PrefabInstance:
   m_ObjectHideFlags: 0
