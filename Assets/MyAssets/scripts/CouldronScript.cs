@@ -6,8 +6,8 @@ public class CouldronScript : MonoBehaviour
 {
     public Color startingColor;
     public Color endColor;
+    public int maxIngredients = 2;
     private List<string> insertedIngredients = new List<string>();
-    int maxIngredients = 2;
     private Material mixtureMaterial;
     private Material bubblesMaterial;
 
@@ -28,7 +28,7 @@ public class CouldronScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Ingredient"))
+        if (collider.gameObject.name.Contains("Spider") || collider.gameObject.name.Contains("Bat"))
         {
             insertedIngredients.Add(collider.gameObject.name);
             Destroy(collider.gameObject);
