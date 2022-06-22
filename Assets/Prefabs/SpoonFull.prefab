@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6988522455960164263}
   m_Layer: 0
   m_Name: SpoonFull
-  m_TagString: Spoon
+  m_TagString: FullSpoon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

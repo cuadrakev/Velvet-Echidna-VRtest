@@ -18,6 +18,10 @@ TagManager:
   - Spoon
   - Mixture
   - Plant
+  - Bat
+  - Cookie
+  - Marshmallow
+  - FullSpoon
   layers:
   - Default
   - TransparentFX
