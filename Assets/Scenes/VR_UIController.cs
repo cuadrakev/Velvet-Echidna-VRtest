@@ -52,15 +52,16 @@ public class VR_UIController : MonoBehaviour
                 
                 Vector3 position = Camera.main.transform.position;
                 Vector3 forwardVector = Camera.main.transform.forward;
+                forwardVector.y = 0;
 
                 float angle = Quaternion.Angle(Quaternion.AngleAxis(0, new Vector3(0, 1, 0)), Camera.main.transform.rotation);
-                if (Camera.main.transform.rotation.w < 0.0)
+                if (forwardVector.x < 0)
                     angle = -angle;
                 Quaternion rotation = Quaternion.AngleAxis(angle, new Vector3(0, 1, 0));
 
                 position += forwardVector * 3;
-                menuCanvas.transform.position = position;
                 menuCanvas.transform.rotation = rotation;
+                menuCanvas.transform.position = position;
             }
             else
             {
