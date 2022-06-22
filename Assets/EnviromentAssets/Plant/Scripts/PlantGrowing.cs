@@ -72,11 +72,12 @@ public class PlantGrowing : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.CompareTag("Spoon"))
+        if (collider.gameObject.CompareTag("FullSpoon"))
         {
             for (int i = 0; i < plantMaterials.Count; i++)
             {
-                StartCoroutine(GrowPlant(plantMaterials[i]));
+                //StartCoroutine(GrowPlant(plantMaterials[i]));
+                transform.Translate(-1.0f, 0.0f, 0.0f);
             }
 
             Instantiate(key);
