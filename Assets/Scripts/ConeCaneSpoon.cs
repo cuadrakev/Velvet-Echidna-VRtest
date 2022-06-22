@@ -13,6 +13,7 @@ public class ConeCaneSpoon : MonoBehaviour
             Destroy(other.gameObject);
             Instantiate(coneCaneSpoon);
             coneCaneSpoon.transform.position = transform.position + new Vector3(0,1,0);
+            coneCaneSpoon.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
 
