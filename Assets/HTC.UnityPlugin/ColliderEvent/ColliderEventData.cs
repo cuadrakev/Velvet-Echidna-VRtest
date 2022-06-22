@@ -68,9 +68,12 @@ namespace HTC.UnityPlugin.ColliderEvent
 
         public bool isPressed { get; set; }
 
+        public GameObject forceGrab { get; set; }
+
         public ColliderButtonEventData(IColliderEventCaster eventCaster, InputButton button = 0) : base(eventCaster)
         {
             this.button = button;
+            this.forceGrab = null;
         }
 
         public abstract bool GetPress();

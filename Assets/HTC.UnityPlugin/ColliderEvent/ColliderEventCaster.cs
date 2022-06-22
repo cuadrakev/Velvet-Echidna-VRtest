@@ -192,6 +192,25 @@ namespace HTC.UnityPlugin.ColliderEvent
                     }
                 }
 
+                if(eventData.forceGrab != null)
+                {
+                    stayingColliders.Add(eventData.forceGrab.GetComponent<Collider>());
+                    hoveredObjects.AddUnique(eventData.forceGrab);
+                    hoverEnterHandlers.Add(eventData.forceGrab);
+                    
+                    eventData.isPressed = true;
+                    eventData.pressPosition = transform.position;
+                    eventData.pressRotation = transform.rotation;
+
+                    eventData.pressedRawObjects.AddUnique(eventData.forceGrab);
+
+                    GetEventHandlersFromHoveredColliders<IColliderEventPressDownHandler>(eventData.pressedHandlers, handlers.pressDownHandlers);
+                    GetEventHandlersFromHoveredColliders<IColliderEventClickHandler>(eventData.clickingHandlers);
+                    GetEventHandlersFromHoveredColliders<IColliderEventDragStartHandler>(eventData.draggingHandlers, handlers.dragStartHandlers);
+                    handlers.dragUpdateHandlers.AddRange(eventData.draggingHandlers);
+                    eventData.forceGrab = null;
+                }
+
                 // process pressed button enter/exit
                 if (eventData.isPressed)
                 {
