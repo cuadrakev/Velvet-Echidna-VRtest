@@ -11,6 +11,7 @@ public class HouseDoor : MonoBehaviour
         {
             transform.Rotate(-60, 0, 0);
             floor.SetActive(true);
+            GetComponent<AudioSource>().Play();
         }
     }
 }

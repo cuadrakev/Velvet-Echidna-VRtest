@@ -128,8 +128,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5db8e5188dde6549b946c88b3467bd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fill: {fileID: 8300000, guid: 9e29ec569087501419da38d5c9c7c9f9, type: 3}
-  pour: {fileID: 8300000, guid: 6b9156038f0151746ad7bee7ee20c879, type: 3}
   coneCaneSpoon: {fileID: 561656779766468611}
   fullSpoon: {fileID: 7437518830162795083, guid: f0f8a61c99a3f2e4cba8859cca14d71f,
     type: 3}
@@ -143,8 +141,8 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_audioClip: {fileID: 8300000, guid: 6b9156038f0151746ad7bee7ee20c879, type: 3}
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

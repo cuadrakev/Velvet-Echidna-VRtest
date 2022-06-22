@@ -15,6 +15,8 @@ public class PlantGrowing : MonoBehaviour
     private List<Material> plantMaterials = new List<Material>();
     private bool fullyGrown;
 
+    public GameObject pot;
+
     public GameObject key;
     // Start is called before the first frame update
     void Start()
@@ -74,9 +76,18 @@ public class PlantGrowing : MonoBehaviour
     {
         if (collider.gameObject.CompareTag("Spoon"))
         {
+            collider.gameObject.GetComponent<AudioSource>().Play();
+
             for (int i = 0; i < plantMaterials.Count; i++)
             {
                 StartCoroutine(GrowPlant(plantMaterials[i]));
+            }
+
+            if(pot != null)
+            {
+                AudioSource audioSource = pot.GetComponent<AudioSource>();
+                if (audioSource != null)
+                    audioSource.Play();
             }
 
             Instantiate(key);
