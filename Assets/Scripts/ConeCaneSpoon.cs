@@ -14,8 +14,9 @@ public class ConeCaneSpoon : MonoBehaviour
         {
             var newObject = Instantiate(coneCaneSpoon);
             newObject.transform.position = transform.position;
-            GrabCombinedObject(gameObject, other.gameObject, newObject);
             Destroy(other.gameObject);
+            GrabCombinedObject(gameObject, other.gameObject, newObject);
+            newObject.GetComponent<AudioSource>().Play();
             Destroy(this.gameObject);
         }
 
@@ -26,6 +27,7 @@ public class ConeCaneSpoon : MonoBehaviour
             var newObject = Instantiate(fullSpoon);
             newObject.transform.position = transform.position;
             GrabCombinedObject(gameObject, other.gameObject, newObject);
+            newObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject.transform.parent.transform.Find("Bubbles").gameObject);
             Destroy(other.gameObject);
             Destroy(this.gameObject);

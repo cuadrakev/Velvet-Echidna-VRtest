@@ -11,6 +11,7 @@ public class CageDoor : MonoBehaviour
         {
             transform.Rotate(0, 0, -75);
             floor.SetActive(true);
+            GetComponent<AudioSource>().Play();
         }
     }
 }

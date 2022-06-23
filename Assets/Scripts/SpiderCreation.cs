@@ -17,6 +17,7 @@ public class SpiderCreation : MonoBehaviour
             var newObject = Instantiate(spider2);
             newObject.transform.position = transform.position;
             GrabCombinedObject(gameObject, other.gameObject, newObject);
+            newObject.GetComponent<AudioSource>().Play();
         }
 
         if (tag == "Spider2" && other.tag == "JellyBean")
@@ -24,6 +25,7 @@ public class SpiderCreation : MonoBehaviour
             var newObject = Instantiate(spiderFull);
             newObject.transform.position = transform.position;
             GrabCombinedObject(gameObject, other.gameObject, newObject);
+            newObject.GetComponent<AudioSource>().Play();
             Destroy(other.gameObject);
             Destroy(this.gameObject);
         }

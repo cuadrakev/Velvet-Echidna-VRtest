@@ -10,13 +10,13 @@ PrefabInstance:
     - target: {fileID: 181397992782748922, guid: 81d19e388a3d0bb43b1904387b5937f1,
         type: 3}
       propertyPath: spider2
-      value: 
+      value:
       objectReference: {fileID: 5760468202531290326, guid: 8cee01128e0dc424c87a214938d8b007,
         type: 3}
     - target: {fileID: 181397992782748922, guid: 81d19e388a3d0bb43b1904387b5937f1,
         type: 3}
       propertyPath: spiderFull
-      value: 
+      value:
       objectReference: {fileID: 1538017541395626472, guid: 7b9e63c5c2203c549990af086b55e84b,
         type: 3}
     - target: {fileID: 7397740963392714175, guid: 81d19e388a3d0bb43b1904387b5937f1,
@@ -87,7 +87,7 @@ PrefabInstance:
     - target: {fileID: 9055316383810671722, guid: 81d19e388a3d0bb43b1904387b5937f1,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: dc314add687ec0e499eaea3ffe612dfb, type: 2}
     m_RemovedComponents:
     - {fileID: 181397992782748922, guid: 81d19e388a3d0bb43b1904387b5937f1, type: 3}

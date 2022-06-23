@@ -80,7 +80,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: d3013e4888297ee4882eed24a3e24acc,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
-      value: 
+      value:
       objectReference: {fileID: 2100000, guid: 729fc79b6cbf11f499dd552aa0692fe8, type: 2}
     - target: {fileID: 919132149155446097, guid: d3013e4888297ee4882eed24a3e24acc,
         type: 3}
@@ -236,8 +236,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c1e088ce10ab7d4c87f03fd1f2dfcae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  m_Name:
+  m_EditorClassIdentifier:
   posOffset: {x: 0, y: 0, z: 0}
   rotOffset: {x: 0, y: 0, z: 0}
   alignPosition: 0
